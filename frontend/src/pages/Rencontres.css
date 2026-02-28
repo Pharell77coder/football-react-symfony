@@ -1,0 +1,431 @@
+/* ===================================================
+   RENCONTRES.CSS — Dark Sports Betting Theme
+   =================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@400;500;600&display=swap');
+
+:root {
+  --bg:           #0a0d12;
+  --bg-card:      #111620;
+  --bg-hover:     #161c2a;
+  --border:       rgba(255,255,255,0.06);
+  --border-hover: rgba(255,255,255,0.14);
+  --accent:       #00e5a0;
+  --accent-dim:   rgba(0, 229, 160, 0.12);
+  --live:         #ff3b5c;
+  --live-dim:     rgba(255, 59, 92, 0.12);
+  --gold:         #f5c842;
+  --text-1:       #ffffff;
+  --text-2:       rgba(255,255,255,0.55);
+  --text-3:       rgba(255,255,255,0.28);
+  --odds-bg:      rgba(255,255,255,0.06);
+  --odds-active:  rgba(0, 229, 160, 0.18);
+  --font-display: 'Barlow Condensed', sans-serif;
+  --font-body:    'Barlow', sans-serif;
+}
+
+/* ===== PAGE WRAPPER ===== */
+.rencontres-page {
+  min-height: 100vh;
+  background: var(--bg);
+  font-family: var(--font-body);
+  padding-bottom: 4rem;
+}
+
+/* ===== FILTERS BAR ===== */
+.filters-section {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10, 13, 18, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1.5rem;
+  gap: 1rem;
+}
+
+.filters-bar {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 0.45rem 1rem;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-2);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.filter-btn:hover {
+  background: var(--bg-hover);
+  color: var(--text-1);
+  border-color: var(--border-hover);
+}
+
+.filter-btn.active {
+  background: var(--accent-dim);
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.add-match-btn {
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 0.45rem 1.2rem;
+  border-radius: 4px;
+  background: var(--accent);
+  color: #000;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: opacity 0.2s, transform 0.15s;
+  flex-shrink: 0;
+}
+
+.add-match-btn:hover {
+  opacity: 0.88;
+  transform: translateY(-1px);
+}
+
+/* ===== MATCH LIST ===== */
+.wrap {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+/* ===== MATCH CARD ===== */
+.match-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0 1rem;
+  height: 64px;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: background 0.18s, border-color 0.18s, transform 0.12s;
+  position: relative;
+  overflow: hidden;
+}
+
+.match-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: transparent;
+  transition: background 0.2s;
+}
+
+.match-card:hover {
+  background: var(--bg-hover);
+  border-color: var(--border-hover);
+  transform: translateX(2px);
+}
+
+.match-card:hover::before {
+  background: var(--accent);
+}
+
+/* Live card */
+.match-card.odds-up {
+  border-color: rgba(255, 59, 92, 0.25);
+  background: rgba(255, 59, 92, 0.04);
+}
+
+.match-card.odds-up::before {
+  background: var(--live);
+}
+
+.match-card.odds-up:hover {
+  background: rgba(255, 59, 92, 0.08);
+}
+
+/* ===== LEFT SIDE ===== */
+.match-card-left {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.match-card-left__score {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 36px;
+  flex-shrink: 0;
+}
+
+.match-card-left__score h5 {
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-1);
+  margin: 0;
+  line-height: 1;
+  letter-spacing: 0.5px;
+}
+
+.match-time {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  color: var(--text-3);
+  letter-spacing: 0.5px;
+  margin-top: 2px;
+}
+
+.match-card-left__competitors {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-1);
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
+}
+
+.vs {
+  color: var(--text-3);
+  font-weight: 400;
+  font-size: 0.8rem;
+  margin: 0 0.3rem;
+}
+
+/* ===== RIGHT SIDE ===== */
+.match-card-right {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-shrink: 0;
+}
+
+/* Star / Favorite */
+.match-card-right__fav {
+  display: flex;
+  align-items: center;
+}
+
+.star {
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.star svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: var(--text-3);
+  stroke-width: 1.5;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.star svg.gold {
+  fill: var(--gold);
+  stroke: var(--gold);
+  opacity: 0;
+  transform: scale(0.6);
+}
+
+.star:hover svg.white {
+  stroke: rgba(255,255,255,0.6);
+}
+
+.star.fav svg.white {
+  opacity: 0;
+}
+
+.star.fav svg.gold {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Live badge */
+.match-card-right__live {
+  background: var(--live-dim);
+  border: 1px solid var(--live);
+  border-radius: 3px;
+  padding: 0 0.45rem;
+  height: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.match-card-right__live em {
+  font-family: var(--font-display);
+  font-size: 0.68rem;
+  font-weight: 800;
+  font-style: normal;
+  color: var(--live);
+  letter-spacing: 2px;
+  animation: pulse-live 1.4s ease-in-out infinite;
+}
+
+@keyframes pulse-live {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+
+/* Odds buttons */
+.match-card-right__odds {
+  display: flex;
+  gap: 3px;
+}
+
+.match-card-right__odds button {
+  font-family: var(--font-display);
+  background: var(--odds-bg);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  width: 44px;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.18s, border-color 0.18s, transform 0.1s;
+  padding: 0;
+}
+
+.match-card-right__odds button strong {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--text-3);
+  line-height: 1;
+}
+
+.match-card-right__odds button p {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-1);
+  margin: 1px 0 0;
+  line-height: 1;
+}
+
+.match-card-right__odds button:hover {
+  background: var(--bg-hover);
+  border-color: var(--border-hover);
+  transform: translateY(-1px);
+}
+
+.match-card-right__odds button.clicked {
+  background: var(--odds-active);
+  border-color: var(--accent);
+}
+
+.match-card-right__odds button.clicked strong,
+.match-card-right__odds button.clicked p {
+  color: var(--accent);
+}
+
+/* Score */
+.match-card-right__markets {
+  min-width: 52px;
+  text-align: center;
+}
+
+.match-card-right__markets strong {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--text-1);
+  letter-spacing: 2px;
+}
+
+/* ===== EMPTY STATE ===== */
+.match-card.empty {
+  justify-content: center;
+  height: 72px;
+  background: rgba(255,255,255,0.02);
+  border-style: dashed;
+}
+
+.empty-text {
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  letter-spacing: 2px;
+  color: var(--text-3);
+}
+
+/* ===== LOADING / ERROR ===== */
+.loading,
+.error {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  letter-spacing: 3px;
+  text-align: center;
+  padding: 5rem 1rem;
+  color: var(--text-3);
+}
+
+.error {
+  color: var(--live);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 600px) {
+  .filters-section {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.75rem 1rem;
+  }
+
+  .add-match-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .match-card {
+    height: auto;
+    min-height: 64px;
+    padding: 0.75rem 0.75rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .match-card-left__competitors {
+    font-size: 0.88rem;
+  }
+
+  .match-card-right__odds {
+    display: none;
+  }
+
+  .match-card-right__markets strong {
+    font-size: 0.95rem;
+  }
+}

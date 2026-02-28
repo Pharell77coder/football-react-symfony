@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getRencontres, getRencontresBySaison, getRencontresByEquipe } from '../services/Api';
+import './Rencontres.css';
 
 function Rencontres() {
   const [rencontres, setRencontres] = useState([]);
