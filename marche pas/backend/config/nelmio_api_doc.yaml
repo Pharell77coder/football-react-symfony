@@ -1,0 +1,30 @@
+nelmio_api_doc:
+    documentation:
+        info:
+            title: Football API
+            description: |
+                API REST pour la gestion de matchs de football.
+                
+                ## Authentification
+                Toutes les routes (sauf `/api/auth/inscription` et `/api/auth/connexion`) 
+                nécessitent un token JWT dans le header :
+                ```
+                Authorization: Bearer <votre_token>
+                ```
+                
+                ## Obtenir un token
+                1. POST `/api/auth/inscription` ou `/api/auth/connexion`
+                2. Copier le `token` de la réponse
+                3. Cliquer sur "Authorize" ci-dessus et coller le token
+            version: 1.0.0
+        components:
+            securitySchemes:
+                Bearer:
+                    type: http
+                    scheme: bearer
+                    bearerFormat: JWT
+        security:
+            - Bearer: []
+    areas:
+        path_patterns:
+            - ^/api(?!/doc$)

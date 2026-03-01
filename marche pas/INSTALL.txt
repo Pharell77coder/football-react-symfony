@@ -1,0 +1,48 @@
+# ============================================================
+# COMMANDES D'INSTALLATION — COMPLÉTION DU PROJET
+# ============================================================
+
+# 1. Installer Swagger/OpenAPI (OBLIGATOIRE)
+docker compose exec backend composer require nelmio/api-doc-bundle
+docker compose exec backend composer require zircote/swagger-php
+
+# 2. Installer le validateur Symfony (si pas déjà installé)
+docker compose exec backend composer require symfony/validator
+
+# 3. Ajouter la route Swagger dans config/routes.yaml
+# (copier le contenu de routes_addition.yaml dans backend/config/routes.yaml)
+
+# 4. Générer et appliquer les migrations
+docker compose exec backend php bin/console make:migration
+docker compose exec backend php bin/console doctrine:migrations:migrate
+
+# 5. Recharger les fixtures avec les nouvelles entités
+docker compose exec backend php bin/console doctrine:fixtures:load --no-interaction
+
+# 6. Vérifier que Swagger fonctionne
+# → http://localhost:8000/api/doc
+
+# ============================================================
+# VÉRIFICATION DU PROJET
+# ============================================================
+# Endpoints disponibles :
+# GET  /api/doc              → Documentation Swagger
+# GET  /api/health           → Health check
+# POST /api/auth/inscription → Inscription
+# POST /api/auth/connexion   → Connexion
+# GET  /api/auth/me          → Profil (JWT requis)
+# GET  /api/rencontres       → Liste paginée (?page=1&limit=10)
+# GET  /api/rencontres/stats → Statistiques globales
+# GET  /api/rencontres/classement/{saison}
+# GET  /api/rencontres/equipe/{equipe}
+# GET  /api/rencontres/{id}
+# POST /api/rencontres       → (ROLE_ADMIN)
+# PUT  /api/rencontres/{id}  → (ROLE_ADMIN)
+# DELETE /api/rencontres/{id}→ (ROLE_ADMIN)
+# GET  /api/joueurs          → Liste
+# GET  /api/joueurs/buteurs  → Top buteurs
+# GET  /api/joueurs/passeurs → Top passeurs
+# GET  /api/joueurs/equipe-type
+# GET  /api/equipes          → Liste équipes
+# GET  /api/equipes/{id}     → Détail + stats
+# GET  /api/users            → (ROLE_ADMIN)

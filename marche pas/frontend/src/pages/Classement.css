@@ -1,0 +1,241 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@400;500;600&display=swap');
+
+:root {
+  --bg:      #0a0d12;
+  --card:    #111620;
+  --hover:   #161c2a;
+  --border:  rgba(255,255,255,0.06);
+  --accent:  #00e5a0;
+  --gold:    #f5c842;
+  --blue:    #3b82f6;
+  --red:     #ff3b5c;
+  --t1: #fff;
+  --t2: rgba(255,255,255,0.55);
+  --t3: rgba(255,255,255,0.25);
+  --font-d: 'Barlow Condensed', sans-serif;
+  --font-b: 'Barlow', sans-serif;
+}
+
+.classement-page {
+  min-height: 100vh;
+  background: var(--bg);
+  font-family: var(--font-b);
+  padding-bottom: 5rem;
+}
+
+/* HERO */
+.classement-hero {
+  text-align: center;
+  padding: 3.5rem 1rem 2rem;
+  background: linear-gradient(180deg, rgba(0,229,160,0.06) 0%, transparent 100%);
+  border-bottom: 1px solid var(--border);
+}
+
+.classement-hero__label {
+  font-family: var(--font-d);
+  font-size: 0.7rem;
+  font-weight: 900;
+  letter-spacing: 5px;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+}
+
+.classement-hero h1 {
+  font-family: var(--font-d);
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  font-weight: 900;
+  letter-spacing: 4px;
+  color: var(--t1);
+  margin: 0;
+}
+
+.classement-hero p {
+  font-family: var(--font-d);
+  font-size: 0.8rem;
+  letter-spacing: 4px;
+  color: var(--t2);
+  margin: 0.75rem 0 0;
+}
+
+/* STATS GLOBALES */
+.global-stats {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+
+.global-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  border-right: 1px solid var(--border);
+  min-width: 120px;
+}
+
+.global-stat:last-child { border-right: none; }
+
+.global-stat em {
+  font-style: normal;
+  font-family: var(--font-d);
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.global-stat span {
+  font-family: var(--font-d);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--t3);
+  margin-top: 4px;
+  text-transform: uppercase;
+}
+
+/* CONTROLS */
+.classement-controls {
+  display: flex;
+  justify-content: center;
+  padding: 1.5rem 1rem;
+}
+
+.saison-tabs {
+  display: flex;
+  gap: 0;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.saison-tabs button {
+  font-family: var(--font-d);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  padding: 0.6rem 1.5rem;
+  background: transparent;
+  border: none;
+  color: var(--t2);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  border-right: 1px solid var(--border);
+}
+
+.saison-tabs button:last-child { border-right: none; }
+.saison-tabs button:hover { background: var(--hover); color: var(--t1); }
+.saison-tabs button.active { background: rgba(0,229,160,0.1); color: var(--accent); }
+
+/* TABLEAU */
+.classement-wrap {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.classement-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.classement-table th {
+  font-family: var(--font-d);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--t3);
+  text-align: center;
+  padding: 0.75rem 0.6rem;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+.classement-table th.col-equipe { text-align: left; padding-left: 1rem; }
+
+.classement-table td {
+  font-family: var(--font-d);
+  font-size: 0.95rem;
+  color: var(--t2);
+  text-align: center;
+  padding: 0.85rem 0.6rem;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+
+.classement-table tr:last-child td { border-bottom: none; }
+.classement-table tr:hover td { background: var(--hover); }
+
+.col-equipe { text-align: left !important; padding-left: 1rem !important; }
+.col-equipe strong { color: var(--t1); font-size: 1rem; letter-spacing: 0.5px; }
+
+.col-pts strong {
+  font-size: 1.2rem;
+  font-weight: 900;
+  color: var(--t1);
+}
+
+/* RANG */
+.rang {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 4px;
+  font-family: var(--font-d);
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--t3);
+}
+
+/* LIGNES SPÉCIALES */
+.row-gold td { background: rgba(245, 200, 66, 0.04); }
+.row-gold td:first-child .rang { background: rgba(245,200,66,0.2); color: var(--gold); }
+.row-gold .col-pts strong { color: var(--gold); }
+
+.row-qualify td { background: rgba(59, 130, 246, 0.03); }
+.row-qualify td:first-child .rang { background: rgba(59,130,246,0.15); color: var(--blue); }
+
+/* CELLULES COLORÉES */
+.cell-v   { color: var(--accent) !important; font-weight: 700; }
+.cell-d   { color: var(--red) !important; }
+.cell-pos { color: var(--accent) !important; font-weight: 700; }
+.cell-neg { color: var(--red) !important; }
+
+/* LÉGENDE */
+.classement-legend {
+  display: flex;
+  gap: 1.5rem;
+  padding: 1rem 0.5rem;
+}
+
+.legend-item {
+  font-family: var(--font-d);
+  font-size: 0.72rem;
+  letter-spacing: 1px;
+  color: var(--t3);
+}
+
+/* ÉTATS */
+.classement-loading,
+.classement-empty {
+  font-family: var(--font-d);
+  text-align: center;
+  padding: 4rem 1rem;
+  color: var(--t3);
+  letter-spacing: 3px;
+  font-size: 0.82rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  .global-stat { padding: 1rem; min-width: 90px; }
+  .classement-table th:nth-child(n+7),
+  .classement-table td:nth-child(n+7) { display: none; }
+}
